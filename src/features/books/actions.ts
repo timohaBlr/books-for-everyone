@@ -1,8 +1,16 @@
-import {ItemType} from "../../api/appApi";
+import {ItemType, ParamsType} from "../../api/appApi";
 
 export const setBooksAC = (books: ItemType[]) => {
     return {
         type: 'BOOKS/SET_BOOKS',
+        payload: {
+            books,
+        },
+    } as const
+}
+export const addBooksAC = (books: ItemType[]) => {
+    return {
+        type: 'BOOKS/ADD_BOOKS',
         payload: {
             books,
         },
@@ -13,6 +21,22 @@ export const setTotalItemsAC = (totalItems: number) => {
         type: 'BOOKS/SET_TOTAL_ITEMS',
         payload: {
             totalItems,
+        },
+    } as const
+}
+export const setSearchParamsAC = (searchParams: ParamsType) => {
+    return {
+        type: 'BOOKS/SET_SEARCH_PARAMS',
+        payload: {
+            searchParams,
+        },
+    } as const
+}
+export const setSelectedBookIdAC = (selectedBookId: string) => {
+    return {
+        type: 'BOOKS/SET_SELECTED_BOOK_ID',
+        payload: {
+            selectedBookId,
         },
     } as const
 }

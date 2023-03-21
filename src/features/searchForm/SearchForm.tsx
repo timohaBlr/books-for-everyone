@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, FormikHelpers, Field, Formik} from "formik";
+import {Form, FormikHelpers, Field, Formik, ErrorMessage} from "formik";
 import {categoryOptions, sortBy} from "../../common/constants/constants";
 import {getBooksTC} from "../books/booksReducer";
 import useAppDispatch from "../../common/hooks/useAppDispatch";
@@ -10,10 +10,27 @@ export interface Values {
     orderBy: string;
 }
 
-export const SearchForm = () => {
+type FormikErrorsType = {
+    q?: string
+    categories?: string
+    orderBy?: string
+}
+
+const validateSearch = (values: Values) => {
+    let errors: FormikErrorsType = {};
+    if (values.q === '') {
+        errors.q = 'Введите, что вас интересует.'
+    }
+    return errors
+}
+
+const SearchForm = () => {
     const dispatch = useAppDispatch()
+
+
     return (
         <div>
+            <h1>Search for books</h1>
             <Formik
                 initialValues={{
                     q: '',
@@ -24,18 +41,20 @@ export const SearchForm = () => {
                     values: Values,
                     {setSubmitting}: FormikHelpers<Values>
                 ) => {
-                    const searchParams = {
-                        q: values.q + (values.categories !== 'all' ? `+subject:${values.categories}` : ''),
+                    const categories = values.categories !== 'all' ? ` subject:${values.categories}` : ''
+                    const searchFormParams = {
+                        q: values.q + categories,
                         orderBy: values.orderBy
                     }
-                    dispatch(getBooksTC(searchParams))
-                    // alert(JSON.stringify(params, null, 2));
+                    dispatch(getBooksTC(searchFormParams))
                     setSubmitting(false);
                 }}
+                validate={validateSearch}
+                validateOnBlur={false}
             >
                 <Form>
-                    {/*<label htmlFor="q">First Name</label>*/}
                     <Field id="q" name="q" placeholder="Search a book..."/>
+                    <ErrorMessage name="q"/>
 
                     <label htmlFor="categories">Categories</label>
                     <Field
@@ -45,11 +64,11 @@ export const SearchForm = () => {
                         {categoryOptions.map(category => <option key={category} value={category}>{category}</option>)}
                     </Field>
 
-                    <label htmlFor="sortingBy">Sorting by</label>
+                    <label htmlFor="orderBy">Sorting by</label>
                     <Field
                         as={'select'}
-                        id="sortingBy"
-                        name="sortingBy"
+                        id="orderBy"
+                        name="orderBy"
                     >
                         {sortBy.map(sort => <option key={sort} value={sort}>{sort}</option>)}
                     </Field>

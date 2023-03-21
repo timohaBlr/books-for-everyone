@@ -17,8 +17,8 @@ export const booksApi = {
 export type ParamsType = {
     q: string
     orderBy: string
-    startIndex: number
-    maxResults : number
+    startIndex?: number
+    maxResults? : number
 
 }
 export type ResponseType = {
