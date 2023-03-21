@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/books-for-everyone/static/css/main.31d6cfe0.css",
+    "main.js": "/books-for-everyone/static/js/main.4155f3e1.js",
+    "static/js/787.ffc7c982.chunk.js": "/books-for-everyone/static/js/787.ffc7c982.chunk.js",
+    "index.html": "/books-for-everyone/index.html",
+    "main.4155f3e1.js.map": "/books-for-everyone/static/js/main.4155f3e1.js.map",
+    "787.ffc7c982.chunk.js.map": "/books-for-everyone/static/js/787.ffc7c982.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.4155f3e1.js"
+  ]
+}
