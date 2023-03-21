@@ -3,9 +3,11 @@ import {appReducer} from "./appReducer";
 import thunk from 'redux-thunk'
 import {AppThunkDispatch} from "./types";
 import {composeWithDevTools} from "redux-devtools-extension";
+import {booksReducer} from "../features/books/booksReducer";
 
 const rootReducer = combineReducers({
     root:appReducer,
+    books: booksReducer,
 })
 
 const middlewareEnhancer = applyMiddleware<AppThunkDispatch, AppRootStateType>(thunk)

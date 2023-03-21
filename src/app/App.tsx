@@ -1,23 +1,15 @@
 import React, {useEffect} from 'react';
 import './App.css';
 import {booksApi} from "../api/appApi";
+import useAppDispatch from "../common/hooks/useAppDispatch";
+import {RouterProvider} from "react-router-dom";
+import {router} from "../common/routes";
 
 function App() {
-let items:any[] = []
-  useEffect( ()=>{
-   booksApi.getBooks({q:'flowers',
-       // key:'AIzaSyDuoggnxnppevRQV2YYwBR0dMkAxRtq_3I'
-   })
-       .then((res)=>{
-         items = res.data.items
-       })
-  },[])
-  return (
-    <div >
-        {items.map((i,index)=><p key={index}>i.volumeInfo.title</p> )}
-Hello world!
-    </div>
-  );
+    return <RouterProvider router={router}/>
+    ;
 }
 
 export default App;
+
+

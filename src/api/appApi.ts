@@ -2,31 +2,31 @@ import axios from "axios";
 
 export const instance = axios.create({
     baseURL: 'https://www.googleapis.com/books/v1',
-    // withCredentials: true,
-    // headers: {
-    //     'API-KEY': 'AIzaSyDuoggnxnppevRQV2YYwBR0dMkAxRtq_3I'
-    // }
+    params: {
+        key: 'AIzaSyDuoggnxnppevRQV2YYwBR0dMkAxRtq_3I'
+    }
 })
 
 
 export const booksApi = {
     getBooks(params: ParamsType) {
-        params.key='AIzaSyDuoggnxnppevRQV2YYwBR0dMkAxRtq_3I'
         return instance.get<ResponseType>('volumes', {params})
-
     }
 }
 
-type ParamsType = {
+export type ParamsType = {
     q: string
-    key?: string
+    orderBy: string
+    startIndex: number
+    maxResults : number
+
 }
-type ResponseType = {
+export type ResponseType = {
     items: ItemType[]
     kind: string
     totalItems: number
 }
-type ItemType = {
+export type ItemType = {
     accessInfo: {
         accessViewStatus: string
         country: string
