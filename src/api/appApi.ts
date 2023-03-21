@@ -2,15 +2,16 @@ import axios from "axios";
 
 export const instance = axios.create({
     baseURL: 'https://www.googleapis.com/books/v1',
-    withCredentials: true,
-    headers: {
-        'API-KEY': 'AIzaSyDuoggnxnppevRQV2YYwBR0dMkAxRtq_3I'
-    }
+    // withCredentials: true,
+    // headers: {
+    //     'API-KEY': 'AIzaSyDuoggnxnppevRQV2YYwBR0dMkAxRtq_3I'
+    // }
 })
 
 
 export const booksApi = {
     getBooks(params: ParamsType) {
+        params.key='AIzaSyDuoggnxnppevRQV2YYwBR0dMkAxRtq_3I'
         return instance.get<ResponseType>('volumes', {params})
 
     }
@@ -18,7 +19,7 @@ export const booksApi = {
 
 type ParamsType = {
     q: string
-    // key: string
+    key?: string
 }
 type ResponseType = {
     items: ItemType[]
