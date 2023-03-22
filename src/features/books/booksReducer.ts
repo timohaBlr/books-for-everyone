@@ -1,7 +1,8 @@
 import {BooksActionsType} from "./types";
-import {booksApi, ItemType, ParamsType} from "../../api/appApi";
+import {booksApi, ItemType} from "../../api/appApi";
 import {AllReducersActionType, AppThunk} from "../../app/types";
 import * as booksActions from './actions'
+import {Values} from "../searchForm/SearchForm";
 
 type BooksInitialStateType = typeof booksInitialState
 
@@ -10,6 +11,7 @@ const booksInitialState = {
     totalItems: 0,
     searchParams: {
         q: '',
+        categories: 'all',
         orderBy: 'relevance',
     },
     selectedBookId: '',
@@ -34,11 +36,12 @@ export const booksReducer = (state: BooksInitialStateType = booksInitialState, a
 
 
 //thunkCreators
-export const getBooksTC = (searchFormParams: ParamsType): AppThunk<AllReducersActionType> => async (dispatch, getState) => {
+export const getBooksTC = (values: Values): AppThunk<AllReducersActionType> => async (dispatch) => {
 
+    const categories = values.categories !== 'all' ? ` subject:${values.categories}` : ''
     const params = {
-        q: searchFormParams.q,
-        orderBy: searchFormParams.orderBy,
+        q: values.q + categories,
+        orderBy: values.orderBy,
         startIndex: 0,
         maxResults: 30,
     }
@@ -48,16 +51,18 @@ export const getBooksTC = (searchFormParams: ParamsType): AppThunk<AllReducersAc
         dispatch(booksActions.setBooksAC(res.data.items))
         dispatch(booksActions.setTotalItemsAC(res.data.totalItems))
 
-        dispatch(booksActions.setSearchParamsAC(params))
+        dispatch(booksActions.setSearchParamsAC(values))
     } catch (err: any) {
         console.log(err)
     }
 }
 export const addMoreBooksTC = (): AppThunk<AllReducersActionType> => async (dispatch, getState) => {
 
+    const searchParams = getState().books.searchParams
+    const categories = searchParams.categories !== 'all' ? ` subject:${searchParams.categories}` : ''
     const params = {
-        q: getState().books.searchParams.q,
-        orderBy: getState().books.searchParams.orderBy,
+        q: searchParams.q + categories,
+        orderBy: searchParams.orderBy,
         startIndex: getState().books.books.length,
         maxResults: 30,
     }

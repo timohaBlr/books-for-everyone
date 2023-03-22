@@ -1,9 +1,9 @@
 import {createHashRouter} from "react-router-dom";
-import App from "../app/App";
 import {MainLayout} from "../app/MainLayout";
-import {Books} from "../features/books/Books";
+import {BooksPage} from "../features/books/BooksPage";
 import {Book} from "../features/book/Book";
 import {ErrorPage} from "./components/ErrorPage/ErrorPage";
+import Greetings from "./components/greetings/Greetings";
 
 export const PATH = {
     books: '/books/',
@@ -20,10 +20,14 @@ export const router = createHashRouter([
             {
                 errorElement: <ErrorPage/>,
                 children: [
-                    {index: true, element: <Books/>},
+                    {index: true, element: <Greetings/>},
                     {
                         path: PATH.book,
                         element: <Book/>,
+                    },
+                    {
+                        path: PATH.books,
+                        element: <BooksPage/>,
                     },
                 ],
             },

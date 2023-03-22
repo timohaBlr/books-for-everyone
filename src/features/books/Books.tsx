@@ -16,25 +16,20 @@ export const Books = () => {
         dispatch(addMoreBooksTC())
     }
 
-    const mappedBooks = books
-        ? books.map((book, index) => {
-            const handleOnClick = () => {
-                dispatch(setSelectedBookIdAC(book.id))
-            }
-            return (
-                <NavLink key={index} onClick={handleOnClick} to={PATH.books + book.id}>
-                    {book.volumeInfo.title}
-                </NavLink>
-            )
-        })
-        : <div>No books!</div>
+    const mappedBooks = books.map((book, index) => {
+        const handleOnClick = () => {
+            dispatch(setSelectedBookIdAC(book.id))
+        }
+        return (
+            <NavLink key={index} onClick={handleOnClick} to={PATH.books + book.id}>
+                {book.volumeInfo.title}
+            </NavLink>
+        )
+    })
 
-
-    return (
-        <div>Hello Books!
+    return  <div>Hello Books!
             <p>Found {totalItems} results</p>
             {mappedBooks}
-            {!!books.length && <button onClick={handleAddMoreBooks}>Load more</button>}
+            <button onClick={handleAddMoreBooks}>Load more</button>
         </div>
-    )
-}
+    }

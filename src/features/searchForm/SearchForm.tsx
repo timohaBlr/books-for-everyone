@@ -3,6 +3,8 @@ import {Form, FormikHelpers, Field, Formik, ErrorMessage} from "formik";
 import {categoryOptions, sortBy} from "../../common/constants/constants";
 import {getBooksTC} from "../books/booksReducer";
 import useAppDispatch from "../../common/hooks/useAppDispatch";
+import useAppSelector from "../../common/hooks/useAppSelector";
+import {selectSearchParams} from "../books/selectors";
 
 export interface Values {
     q: string;
@@ -26,6 +28,7 @@ const validateSearch = (values: Values) => {
 
 const SearchForm = () => {
     const dispatch = useAppDispatch()
+    const searchParams = useAppSelector(selectSearchParams)
 
 
     return (
@@ -33,20 +36,20 @@ const SearchForm = () => {
             <h1>Search for books</h1>
             <Formik
                 initialValues={{
-                    q: '',
+                    q: searchParams.q,
                     categories: 'all',
-                    orderBy: 'relevance',
+                    orderBy: searchParams.orderBy,
                 }}
                 onSubmit={(
                     values: Values,
                     {setSubmitting}: FormikHelpers<Values>
                 ) => {
-                    const categories = values.categories !== 'all' ? ` subject:${values.categories}` : ''
-                    const searchFormParams = {
-                        q: values.q + categories,
-                        orderBy: values.orderBy
-                    }
-                    dispatch(getBooksTC(searchFormParams))
+                    // const categories = values.categories !== 'all' ? ` subject:${values.categories}` : ''
+                    // const searchFormParams = {
+                    //     q: values.q + categories,
+                    //     orderBy: values.orderBy
+                    // }
+                    dispatch(getBooksTC(values))
                     setSubmitting(false);
                 }}
                 validate={validateSearch}
