@@ -8,8 +8,10 @@ export const BooksPage = () => {
     const totalItems = useAppSelector(selectTotalCount)
 
 
-    return (totalItems
-        ? <Books/>
-        : < NothingWasFound / >
-            )
-            }
+    return (
+        <div>
+            {!!totalItems && <Books/>}
+            {!totalItems && <NothingWasFound/>}
+        </div>
+    )
+}

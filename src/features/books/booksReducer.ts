@@ -51,7 +51,6 @@ export const getBooksTC = (values: Values): AppThunk<AllReducersActionType> => a
         dispatch(booksActions.setBooksAC(res.data.items))
         dispatch(booksActions.setTotalItemsAC(res.data.totalItems))
 
-        dispatch(booksActions.setSearchParamsAC(values))
     } catch (err: any) {
         console.log(err)
     }

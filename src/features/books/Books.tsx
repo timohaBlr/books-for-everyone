@@ -3,9 +3,9 @@ import useAppSelector from "../../common/hooks/useAppSelector";
 import {selectBooks, selectTotalCount} from "./selectors";
 import useAppDispatch from "../../common/hooks/useAppDispatch";
 import {addMoreBooksTC} from "./booksReducer";
-import {PATH} from "../../common/routes";
-import {NavLink} from "react-router-dom";
 import {setSelectedBookIdAC} from "./actions";
+import {Container, CssBaseline, Grid} from "@mui/material";
+import BookCard from "./BookCard/BookCard";
 
 export const Books = () => {
     const dispatch = useAppDispatch()
@@ -15,21 +15,24 @@ export const Books = () => {
     const handleAddMoreBooks = () => {
         dispatch(addMoreBooksTC())
     }
-
+    const handleOnClick = (bookId: string) => {
+        dispatch(setSelectedBookIdAC(bookId))
+    }
     const mappedBooks = books.map((book, index) => {
-        const handleOnClick = () => {
-            dispatch(setSelectedBookIdAC(book.id))
-        }
-        return (
-            <NavLink key={index} onClick={handleOnClick} to={PATH.books + book.id}>
-                {book.volumeInfo.title}
-            </NavLink>
-        )
+        return <BookCard key={index}
+                         book={book}
+                         callBack={handleOnClick}
+        />
     })
 
-    return  <div>Hello Books!
-            <p>Found {totalItems} results</p>
+    return <>
+        <h5>Found {totalItems} results</h5>
+
+
+        <Grid container spacing={5} style={{justifyContent: 'center'}}>
             {mappedBooks}
-            <button onClick={handleAddMoreBooks}>Load more</button>
-        </div>
-    }
+        </Grid>
+
+        <button onClick={handleAddMoreBooks}>Load more</button>
+    </>
+}

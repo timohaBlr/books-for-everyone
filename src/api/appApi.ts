@@ -54,34 +54,36 @@ export type ItemType = {
         textSnippet: string
     }
     selfLink: string
-    volumeInfo: {
-        allowAnonLogging: boolean
-        authors: string[]
-        canonicalVolumeLink: string
-        categories: string[]
-        contentVersion: string
-        description: string
-        imageLinks: {
-            smallThumbnail: string
-            thumbnail: string
-        }
-        industryIdentifiers: { type: string, identifier: string }[]
-        infoLink: string
-        language: string
-        maturityRating: string
-        pageCount: number
-        panelizationSummary: {
-            containsEpubBubbles: boolean
-            containsImageBubbles: boolean
-        }
-        previewLink: string
-        printType: string
-        publishedDate: string
-        publisher: string
-        readingModes: {
-            image: boolean
-            text: boolean
-        }
-        title: string
+    volumeInfo: VolumeInfoType
+}
+export type VolumeInfoType = {
+    allowAnonLogging: boolean
+    authors: string[]
+    canonicalVolumeLink: string
+    categories: string[]
+    contentVersion: string
+    description: string
+    imageLinks:ImageLinksType
+    industryIdentifiers: { type: string, identifier: string }[]
+    infoLink: string
+    language: string
+    maturityRating: string
+    pageCount: number
+    panelizationSummary: {
+        containsEpubBubbles: boolean
+        containsImageBubbles: boolean
     }
+    previewLink: string
+    printType: string
+    publishedDate: string
+    publisher: string
+    readingModes: {
+        image: boolean
+        text: boolean
+    }
+    title: string
+}
+export type  ImageLinksType= {
+    smallThumbnail: string
+    thumbnail: string
 }

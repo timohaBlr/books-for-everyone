@@ -5,6 +5,8 @@ import {getBooksTC} from "../books/booksReducer";
 import useAppDispatch from "../../common/hooks/useAppDispatch";
 import useAppSelector from "../../common/hooks/useAppSelector";
 import {selectSearchParams} from "../books/selectors";
+import * as booksActions from "../books/actions";
+import {setSearchParamsAC} from "../books/actions";
 
 export interface Values {
     q: string;
@@ -37,18 +39,14 @@ const SearchForm = () => {
             <Formik
                 initialValues={{
                     q: searchParams.q,
-                    categories: 'all',
+                    categories: searchParams.categories,
                     orderBy: searchParams.orderBy,
                 }}
                 onSubmit={(
                     values: Values,
                     {setSubmitting}: FormikHelpers<Values>
                 ) => {
-                    // const categories = values.categories !== 'all' ? ` subject:${values.categories}` : ''
-                    // const searchFormParams = {
-                    //     q: values.q + categories,
-                    //     orderBy: values.orderBy
-                    // }
+                    dispatch(setSearchParamsAC(values))
                     dispatch(getBooksTC(values))
                     setSubmitting(false);
                 }}

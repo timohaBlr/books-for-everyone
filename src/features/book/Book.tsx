@@ -10,7 +10,7 @@ export const Book = () => {
     const {title, authors, categories, imageLinks} = book!.volumeInfo
 
     const handleClickBack = () => {
-      navigate(-1)
+        navigate(-1)
     }
     return (
         <div>

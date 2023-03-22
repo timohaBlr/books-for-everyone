@@ -1,6 +1,6 @@
 import React from 'react';
 import useAppSelector from "../../hooks/useAppSelector";
-import { selectSearchParams} from "../../../features/books/selectors";
+import {selectSearchParams} from "../../../features/books/selectors";
 import {Navigate} from 'react-router-dom';
 import {PATH} from "../../routes";
 
