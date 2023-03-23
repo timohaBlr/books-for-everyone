@@ -9,6 +9,7 @@ import BookCard from "./BookCard/BookCard";
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import s from './Books.module.css'
 import {selectIsAppMakeRequest} from "../../app/selectors";
+import {GoToTop} from "../../common/components/GoToTop/GoToTop";
 
 export const Books = () => {
     const dispatch = useAppDispatch()
@@ -43,9 +44,11 @@ export const Books = () => {
                     endIcon={<AutoStoriesIcon/>}
                     disabled={isAppMakeRequest}
             >
-                {isAppMakeRequest? 'Loading ....': 'Load more'}
+                {isAppMakeRequest ? 'Loading ....' : 'Load more'}
             </Button>
         </Divider>
-
+        <GoToTop/>
     </div>
 }
+
+

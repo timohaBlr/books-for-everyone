@@ -1,0 +1,15 @@
+.fab {
+    position: fixed;
+    bottom: -60px;
+    right: 25px;
+    transition: 0.2s linear;
+}
+.active{
+    bottom: 45px;
+    transition: 0.2s linear;
+}
+@media screen and (max-width: 600px){
+    .fab {
+        right: 10px;
+    }
+}

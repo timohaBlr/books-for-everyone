@@ -16,11 +16,6 @@ const NothingWasFound = () => {
                 <li>Try different keywords.</li>
                 <li>Try more general keywords.</li>
             </ul>
-
-
-
-
-
 </span>
         </div>
     )
