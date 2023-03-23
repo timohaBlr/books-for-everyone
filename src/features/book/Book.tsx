@@ -38,9 +38,12 @@ export const Book = () => {
                 <h2>{title}</h2>
                 <p>{bookAuthors}</p>
             </div>
-                <Paper className={s.description}>
+            <div className={s.description}>
+                <Paper >
                     {description}
                 </Paper>
+            </div>
+
 
             <div className={s.button}>
                 <Button variant={"outlined"}

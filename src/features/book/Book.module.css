@@ -33,12 +33,11 @@
     color: rgba(0, 0, 0, 0.63);
 }
 
-.description {
-    background-color: #e0d8af!important;
-    padding: 20px;
+.description div {
     text-indent: 25px;
+    background-color: #e0d8af;
+    padding: 20px;
 }
-
 
 .button {
     text-align: center;
@@ -67,6 +66,7 @@
     .description {
         grid-column-start: span 5;
     }
+
     .button {
         grid-column-start: span 5;
     }
