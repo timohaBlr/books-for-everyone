@@ -6,7 +6,7 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {booksReducer} from "../features/books/booksReducer";
 
 const rootReducer = combineReducers({
-    root:appReducer,
+    app:appReducer,
     books: booksReducer,
 })
 

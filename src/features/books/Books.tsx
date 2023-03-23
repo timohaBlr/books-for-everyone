@@ -4,15 +4,17 @@ import {selectBooks, selectTotalCount} from "./selectors";
 import useAppDispatch from "../../common/hooks/useAppDispatch";
 import {addMoreBooksTC} from "./booksReducer";
 import {setSelectedBookIdAC} from "./actions";
-import {Button,  Divider, Grid} from "@mui/material";
+import {Button, Divider, Grid} from "@mui/material";
 import BookCard from "./BookCard/BookCard";
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import s from './Books.module.css'
+import {selectIsAppMakeRequest} from "../../app/selectors";
 
 export const Books = () => {
     const dispatch = useAppDispatch()
     const books = useAppSelector(selectBooks)
     const totalItems = useAppSelector(selectTotalCount)
+    const isAppMakeRequest = useAppSelector(selectIsAppMakeRequest)
 
     const handleAddMoreBooks = () => {
         dispatch(addMoreBooksTC())
@@ -27,21 +29,23 @@ export const Books = () => {
         />
     })
 
-    return <>
-        <h5>Found {totalItems} results</h5>
+    return <div className={s.wrapper}>
+        <h3>Found {totalItems} results</h3>
 
 
         <Grid container spacing={5} style={{justifyContent: 'center'}}>
             {mappedBooks}
         </Grid>
-        <Divider variant="middle" style={{margin:'50px 0'}}>
+        <Divider variant="middle" style={{margin: '50px 0'}}>
             <Button onClick={handleAddMoreBooks}
                     variant={"outlined"}
                     size={"large"}
-                    endIcon={<AutoStoriesIcon/>}>
-                Load more
+                    endIcon={<AutoStoriesIcon/>}
+                    disabled={isAppMakeRequest}
+            >
+                {isAppMakeRequest? 'Loading ....': 'Load more'}
             </Button>
         </Divider>
 
-    </>
+    </div>
 }

@@ -3,7 +3,7 @@ import {Box, Grid, Paper, Tooltip} from "@mui/material";
 import {ItemType} from "../../../api/appApi";
 import {useNavigate} from "react-router-dom";
 import {PATH} from "../../../common/routes";
-import defaultBookImage from '../../../common/defaultBook.png'
+import defaultBookImage from '../../../common/assets/defaultBook.png'
 import BookImage from "./BookImage";
 import s from './BookCard.module.css'
 

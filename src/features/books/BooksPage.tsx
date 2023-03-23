@@ -7,11 +7,13 @@ import {Books} from "./Books";
 export const BooksPage = () => {
     const totalItems = useAppSelector(selectTotalCount)
 
+    if(totalItems===0 ){
+        return <NothingWasFound/>
+    }
 
     return (
         <div>
-            {!!totalItems && <Books/>}
-            {!totalItems && <NothingWasFound/>}
+            <Books/>
         </div>
     )
 }

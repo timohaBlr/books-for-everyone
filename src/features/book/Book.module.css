@@ -7,9 +7,11 @@
 .image {
     padding: 10px;
     text-align: center;
+    display: grid;
+    align-items: center;
 }
 
-.image img {
+.imageContainer img {
     width: 100%;
     max-width: 275px;
 }
@@ -32,10 +34,11 @@
 }
 
 .description {
-
-    padding: 10px;
+    background-color: #e0d8af!important;
+    padding: 20px;
     text-indent: 25px;
 }
+
 
 .button {
     text-align: center;

@@ -3,9 +3,9 @@ import {selectCurrentBook} from "../books/selectors";
 import useAppSelector from "../../common/hooks/useAppSelector";
 import {useNavigate} from "react-router-dom";
 import BookImage from "../books/BookCard/BookImage";
-import defaultBookImage from "../../common/defaultBook.png";
+import defaultBookImage from "../../common/assets/defaultBook.png";
 import s from './Book.module.css'
-import {Button} from "@mui/material";
+import {Button, Paper} from "@mui/material";
 
 export const Book = () => {
 
@@ -29,14 +29,18 @@ export const Book = () => {
     return (
         <div className={s.wrapper}>
             <div className={s.image}>
-                <BookImage bookImage={bookImage}/>
+                <div className={s.imageContainer}>
+                    <BookImage bookImage={bookImage}/>
+                </div>
             </div>
             <p className={s.category}>{bookCategory}</p>
             <div className={s.title}>
                 <h2>{title}</h2>
                 <p>{bookAuthors}</p>
             </div>
-            <p className={s.description}>{description}</p>
+                <Paper className={s.description}>
+                    {description}
+                </Paper>
 
             <div className={s.button}>
                 <Button variant={"outlined"}
