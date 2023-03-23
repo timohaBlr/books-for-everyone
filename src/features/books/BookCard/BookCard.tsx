@@ -41,13 +41,11 @@ const BookCard: React.FC<BookCardPropsType> = ({book, callBack}) => {
                 alignItems: 'center',
                 gap: '15px',
             }}>
-                <Box onClick={handleOnClick} sx={{cursor: 'pointer'}}>
+                <Box onClick={handleOnClick} sx={{cursor: 'pointer', height: '180px', textAlign: 'center'}}>
                     <BookImage bookImage={bookImage}/>
                 </Box>
                 <Grid container direction={'column'}>
-                    <Grid item
-                          // style={{height: '25px'}}
-                    >
+                    <Grid item>
                         <p className={s.category}>{bookCategory}</p>
                     </Grid>
                     <Grid item style={{height: '75px'}}>

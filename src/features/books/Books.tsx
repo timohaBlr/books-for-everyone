@@ -4,8 +4,10 @@ import {selectBooks, selectTotalCount} from "./selectors";
 import useAppDispatch from "../../common/hooks/useAppDispatch";
 import {addMoreBooksTC} from "./booksReducer";
 import {setSelectedBookIdAC} from "./actions";
-import {Container, CssBaseline, Grid} from "@mui/material";
+import {Button,  Divider, Grid} from "@mui/material";
 import BookCard from "./BookCard/BookCard";
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import s from './Books.module.css'
 
 export const Books = () => {
     const dispatch = useAppDispatch()
@@ -32,7 +34,14 @@ export const Books = () => {
         <Grid container spacing={5} style={{justifyContent: 'center'}}>
             {mappedBooks}
         </Grid>
+        <Divider variant="middle" style={{margin:'50px 0'}}>
+            <Button onClick={handleAddMoreBooks}
+                    variant={"outlined"}
+                    size={"large"}
+                    endIcon={<AutoStoriesIcon/>}>
+                Load more
+            </Button>
+        </Divider>
 
-        <button onClick={handleAddMoreBooks}>Load more</button>
     </>
 }
