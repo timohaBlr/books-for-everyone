@@ -3,11 +3,10 @@ import axios from "axios";
 export const instance = axios.create({
     baseURL: 'https://www.googleapis.com/books/v1',
     params: {
-        key: process.env.REACT_APP_USER_TOKEN
+        key: process.env.REACT_APP_API_KEY
     }
 })
 
-console.log(process.env)
 export const booksApi = {
     getBooks(params: ParamsType) {
         return instance.get<ResponseType>('volumes', {params})
