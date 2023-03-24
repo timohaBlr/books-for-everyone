@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/books-for-everyone/static/css/main.39bc5ce6.css",
-    "main.js": "/books-for-everyone/static/js/main.a7610faa.js",
+    "main.js": "/books-for-everyone/static/js/main.1844de71.js",
     "static/js/111.3943d37c.chunk.js": "/books-for-everyone/static/js/111.3943d37c.chunk.js",
     "static/media/bookBackGround.jpg": "/books-for-everyone/static/media/bookBackGround.23f868b2837d3a353a17.jpg",
     "static/media/defaultBook.png": "/books-for-everyone/static/media/defaultBook.1463113549d365c5268f.png",
     "static/media/spinner.svg": "/books-for-everyone/static/media/spinner.1d98e01987bf59c8ad9abb7deda7ad60.svg",
     "index.html": "/books-for-everyone/index.html",
     "main.39bc5ce6.css.map": "/books-for-everyone/static/css/main.39bc5ce6.css.map",
-    "main.a7610faa.js.map": "/books-for-everyone/static/js/main.a7610faa.js.map",
+    "main.1844de71.js.map": "/books-for-everyone/static/js/main.1844de71.js.map",
     "111.3943d37c.chunk.js.map": "/books-for-everyone/static/js/111.3943d37c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.39bc5ce6.css",
-    "static/js/main.a7610faa.js"
+    "static/js/main.1844de71.js"
   ]
 }
