@@ -3,11 +3,11 @@ import axios from "axios";
 export const instance = axios.create({
     baseURL: 'https://www.googleapis.com/books/v1',
     params: {
-        key: 'AIzaSyDuoggnxnppevRQV2YYwBR0dMkAxRtq_3I'
+        key: process.env.REACT_APP_USER_TOKEN
     }
 })
 
-
+console.log(process.env)
 export const booksApi = {
     getBooks(params: ParamsType) {
         return instance.get<ResponseType>('volumes', {params})
@@ -18,7 +18,7 @@ export type ParamsType = {
     q: string
     orderBy: string
     startIndex?: number
-    maxResults? : number
+    maxResults?: number
 
 }
 export type ResponseType = {
@@ -31,12 +31,18 @@ export type ItemType = {
         accessViewStatus: string
         country: string
         embeddable: boolean
+        viewability: string
+        publicDomain: boolean
+        textToSpeechPermission: string
+        epub: { isAvailable: boolean }
+        pdf: {
+            acsTokenLink?: string
+            isAvailable: boolean
+        }
+
     }
-    epub: { isAvailable: boolean }
-    pdf: {
-        acsTokenLink: string
-        isAvailable: boolean
-    }
+
+
     publicDomain: boolean
     quoteSharingAllowed: boolean
     textToSpeechPermission: string
@@ -61,9 +67,11 @@ export type VolumeInfoType = {
     authors: string[]
     canonicalVolumeLink: string
     categories: string[]
+    averageRating: number
+    ratingsCount: number
     contentVersion: string
     description: string
-    imageLinks:ImageLinksType
+    imageLinks: ImageLinksType
     industryIdentifiers: { type: string, identifier: string }[]
     infoLink: string
     language: string
@@ -82,8 +90,9 @@ export type VolumeInfoType = {
         text: boolean
     }
     title: string
+    subtitle: string
 }
-export type  ImageLinksType= {
+export type  ImageLinksType = {
     smallThumbnail: string
     thumbnail: string
 }

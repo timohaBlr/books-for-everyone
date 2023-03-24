@@ -1,11 +1,11 @@
 import React from 'react';
 import {FormikHelpers, useFormik} from "formik";
-import {categoryOptions, orderBy} from "../../common/constants/constants";
-import {getBooksTC} from "../books/booksReducer";
-import useAppDispatch from "../../common/hooks/useAppDispatch";
-import useAppSelector from "../../common/hooks/useAppSelector";
-import {selectSearchParams} from "../books/selectors";
-import {setSearchParamsAC} from "../books/actions";
+import {categoryOptions, orderBy} from "../../constants/constants";
+import {getBooksTC} from "../../../features/books/booksReducer";
+import useAppDispatch from "../../hooks/useAppDispatch";
+import useAppSelector from "../../hooks/useAppSelector";
+import {selectSearchParams} from "../../../features/books/selectors";
+import {setSearchParamsAC} from "../../../features/books/actions";
 import {
     MenuItem,
     Select,
@@ -13,12 +13,15 @@ import {
 } from "@mui/material";
 import s from './SearchForm.module.css'
 import Search from "./Search";
-import {FormikValuesI} from "../books/types";
-import {validateSearch} from "../../common/utils/validateUtils";
+import {FormikValuesI} from "../../../features/books/types";
+import {validateSearch} from "../../utils/validateUtils";
+import {useNavigate} from "react-router-dom";
+import {PATH} from "../../routes";
 
 const SearchForm = () => {
     const dispatch = useAppDispatch()
     const searchParams = useAppSelector(selectSearchParams)
+    const navigate=useNavigate()
 
     const formik = useFormik({
         initialValues: {
@@ -30,6 +33,7 @@ const SearchForm = () => {
             values: FormikValuesI,
             {setSubmitting}: FormikHelpers<FormikValuesI>
         ) => {
+            navigate(PATH.books)
             dispatch(setSearchParamsAC(values))
             dispatch(getBooksTC(values))
             setSubmitting(false);

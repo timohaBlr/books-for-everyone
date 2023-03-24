@@ -10,7 +10,9 @@ export const errorUtils = (e: ErrorType, dispatch: Dispatch<AppActionsType>) => 
   const err = e as ErrorType
 
   if (axios.isAxiosError(err)) {
-    const error = err.response?.data ? err.response.data.error : err.message
+    //ошибка появилась после отката axios к более ранней версии, так как с новой были проблемы с jest
+    // @ts-ignore
+    const error = err.response?.data ? err.response.data.error.message : err.message
 
     dispatch(setAppErrorAC(error))
   } else {

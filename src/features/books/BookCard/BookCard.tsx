@@ -4,7 +4,7 @@ import {ItemType} from "../../../api/appApi";
 import {useNavigate} from "react-router-dom";
 import {PATH} from "../../../common/routes";
 import defaultBookImage from '../../../common/assets/defaultBook.png'
-import BookImage from "./BookImage";
+import BookImage from "../../../common/components/BookImage/BookImage";
 import s from './BookCard.module.css'
 
 

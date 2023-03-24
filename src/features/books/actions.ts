@@ -1,4 +1,5 @@
-import {ItemType, ParamsType} from "../../api/appApi";
+import {ItemType} from "../../api/appApi";
+import {FormikValuesI} from "./types";
 
 export const setBooksAC = (books: ItemType[]) => {
     return {
@@ -24,7 +25,7 @@ export const setTotalItemsAC = (totalItems: number) => {
         },
     } as const
 }
-export const setSearchParamsAC = (searchParams: ParamsType) => {
+export const setSearchParamsAC = (searchParams: FormikValuesI) => {
     return {
         type: 'BOOKS/SET_SEARCH_PARAMS',
         payload: {

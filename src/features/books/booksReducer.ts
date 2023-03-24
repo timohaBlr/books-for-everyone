@@ -5,7 +5,7 @@ import * as booksActions from './actions'
 import {setIsAppMakeRequestAC} from "../../app/actions";
 import {errorUtils} from "../../common/utils/errorUtils";
 
-type BooksInitialStateType = typeof booksInitialState
+export type BooksInitialStateType = typeof booksInitialState
 
 const booksInitialState = {
     books: [] as ItemType[],

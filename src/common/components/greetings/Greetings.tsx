@@ -14,8 +14,8 @@ const Greetings = () => {
     }
     return (
         <div>
-            <h2 style={{textAlign: 'center'}}> This application use Google Books API. Please make sure you are using a
-                VPN while in Belarus.
+            <h2 style={{textAlign: 'center'}}>
+                This application use Google Books API. Please make sure you are using a VPN while in Belarus.
             </h2>
 
         </div>

@@ -4,8 +4,8 @@ import {
     InputAdornment,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import useAppSelector from "../../common/hooks/useAppSelector";
-import {selectIsAppMakeRequest} from "../../app/selectors";
+import useAppSelector from "../../hooks/useAppSelector";
+import {selectIsAppMakeRequest} from "../../../app/selectors";
 
 const Search = () => {
     const isAppMakeRequest = useAppSelector(selectIsAppMakeRequest)

@@ -6,19 +6,16 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {booksReducer} from "../features/books/booksReducer";
 
 const rootReducer = combineReducers({
-    app:appReducer,
+    app: appReducer,
     books: booksReducer,
 })
 
 const middlewareEnhancer = applyMiddleware<AppThunkDispatch, AppRootStateType>(thunk)
 const composedEnhancers = composeWithDevTools(middlewareEnhancer)
 
-export const store = createStore(rootReducer,composedEnhancers)
+export const store = createStore(rootReducer, composedEnhancers)
 
 export type AppRootStateType = ReturnType<typeof rootReducer>
-
-
-
 
 
 // @ts-ignore
