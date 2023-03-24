@@ -8,7 +8,6 @@ export const GoToTop = () => {
 
     function trackScroll() {
         const offset = window.scrollY;
-        // const coords = document.documentElement.clientHeight;
         if (offset < 200) {
             setShow(false)
         } else {
@@ -34,7 +33,8 @@ export const GoToTop = () => {
         ? s.fab + ' ' + s.active
         : s.fab
 
-    return (<div className={fabClassName}>
+    return (
+        <div className={fabClassName}>
             <Fab variant="circular"
                  onClick={handleOnClick}>
                 <NavigationIcon/>

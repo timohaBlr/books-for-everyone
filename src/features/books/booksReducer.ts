@@ -1,8 +1,7 @@
-import {BooksActionsType} from "./types";
+import {BooksActionsType, FormikValuesI} from "./types";
 import {booksApi, ItemType} from "../../api/appApi";
 import {AllReducersActionType, AppThunk} from "../../app/types";
 import * as booksActions from './actions'
-import {Values} from "../searchForm/SearchForm";
 import {setIsAppMakeRequestAC} from "../../app/actions";
 import {errorUtils} from "../../common/utils/errorUtils";
 
@@ -38,7 +37,7 @@ export const booksReducer = (state: BooksInitialStateType = booksInitialState, a
 
 
 //thunkCreators
-export const getBooksTC = (values: Values): AppThunk<AllReducersActionType> => async (dispatch) => {
+export const getBooksTC = (values: FormikValuesI): AppThunk<AllReducersActionType> => async (dispatch) => {
 
     const categories = values.categories !== 'all' ? ` subject:${values.categories}` : ''
     const params = {

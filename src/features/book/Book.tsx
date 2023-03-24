@@ -39,16 +39,16 @@ export const Book = () => {
                 <p>{bookAuthors}</p>
             </div>
             <div className={s.description}>
-                <Paper >
+                <Paper>
                     {description}
                 </Paper>
             </div>
-
-
             <div className={s.button}>
                 <Button variant={"outlined"}
                         size={"large"}
-                        onClick={handleClickBack}> Go back</Button>
+                        onClick={handleClickBack}>
+                    Go back
+                </Button>
             </div>
         </div>
     )
